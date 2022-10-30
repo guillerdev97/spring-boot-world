@@ -1,11 +1,16 @@
 package com.guillerdev97.SpringBootCourse.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@Getter
+@Setter
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,38 +26,6 @@ public class Department {
         this.departmentId = departmentId;
         this.departmentName = departmentName;
         this.departmentAddress = departmentAddress;
-        this.departmentCode = departmentCode;
-    }
-
-    public Long getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(Long departmentId) {
-        this.departmentId = departmentId;
-    }
-
-    public String getDepartmentName() {
-        return departmentName;
-    }
-
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
-
-    public String getDepartmentAddress() {
-        return departmentAddress;
-    }
-
-    public void setDepartmentAddress(String departmentAddress) {
-        this.departmentAddress = departmentAddress;
-    }
-
-    public String getDepartmentCode() {
-        return departmentCode;
-    }
-
-    public void setDepartmentCode(String departmentCode) {
         this.departmentCode = departmentCode;
     }
 }
