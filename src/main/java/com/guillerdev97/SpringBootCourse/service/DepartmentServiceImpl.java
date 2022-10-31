@@ -35,4 +35,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void deleteDepartmentById(Long departmentId) {
         departmentRepository.deleteById(departmentId);
     }
+
+    @Override
+    public Department updateDepartment(Long departmentId, Department department) {
+        return departmentRepository.
+    }
 }

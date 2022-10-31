@@ -17,7 +17,7 @@ public class DepartmentController {
     }
 
     @PostMapping("/departments")
-    public Department saveDepartment(@RequestBody  Department department) {
+    public Department saveDepartment(@RequestBody Department department) {
         return departmentService.saveDepartment(department);
     }
 
@@ -36,5 +36,10 @@ public class DepartmentController {
         departmentService.deleteDepartmentById(departmentId);
 
         return "Department has been deleted";
+    }
+
+    @PutMapping("/departments/{id}")
+    public Department updateDepartment(@PathVariable("id") Long departmentId, @RequestBody Department department) {
+        return departmentService.updateDepartment(departmentId, department);
     }
 }
