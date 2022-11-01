@@ -2,6 +2,8 @@ package com.guillerdev97.SpringBootCourse.controller;
 
 import com.guillerdev97.SpringBootCourse.entity.Department;
 import com.guillerdev97.SpringBootCourse.service.DepartmentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,12 +15,16 @@ public class DepartmentController {
     @Autowired
     private final DepartmentService departmentService;
 
+    private final Logger log = LoggerFactory.getLogger(DepartmentController.class);
+
     public DepartmentController(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
 
     @PostMapping("/departments")
     public Department saveDepartment(@Valid @RequestBody Department department) {
+        log.info("saveDepartment DepartmentController");
+
         return departmentService.saveDepartment(department);
     }
 
