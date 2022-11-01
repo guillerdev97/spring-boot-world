@@ -13,11 +13,7 @@ import java.util.Optional;
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
     @Autowired
-    private final DepartmentRepository departmentRepository;
-
-    public DepartmentServiceImpl(DepartmentRepository departmentRepository) {
-        this.departmentRepository = departmentRepository;
-    }
+    private DepartmentRepository departmentRepository;
 
     @Override
     public Department saveDepartment(Department department) {
@@ -35,7 +31,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     public Department fetchDepartmentById(Long departmentId) throws DepartmentNotFoundException {
         Optional<Department> department = departmentRepository.findById(departmentId);
 
-        if(!department.isPresent()) {
+        if (!department.isPresent()) {
             throw new DepartmentNotFoundException("Department not available");
         }
 

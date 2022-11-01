@@ -14,13 +14,9 @@ import java.util.List;
 @RestController
 public class DepartmentController {
     @Autowired
-    private final DepartmentService departmentService;
+    private DepartmentService departmentService;
 
     private final Logger log = LoggerFactory.getLogger(DepartmentController.class);
-
-    public DepartmentController(DepartmentService departmentService) {
-        this.departmentService = departmentService;
-    }
 
     @PostMapping("/departments")
     public Department saveDepartment(@Valid @RequestBody Department department) {
