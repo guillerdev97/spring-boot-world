@@ -1,7 +1,6 @@
 package com.guillerdev97.SpringBootCourse.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +9,9 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,14 +20,4 @@ public class Department {
     private String departmentName;
     private String departmentAddress;
     private String departmentCode;
-
-    public Department() {
-    }
-
-    public Department(Long departmentId, String departmentName, String departmentAddress, String departmentCode) {
-        this.departmentId = departmentId;
-        this.departmentName = departmentName;
-        this.departmentAddress = departmentAddress;
-        this.departmentCode = departmentCode;
-    }
 }
