@@ -6,23 +6,33 @@ import com.guillerdev97.SpringBootCourse.service.DepartmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    private final Logger log = LoggerFactory.getLogger(DepartmentController.class);
+    // private final Logger log = LoggerFactory.getLogger(DepartmentController.class);
 
     @PostMapping("/departments")
-    public Department saveDepartment(@Valid @RequestBody Department department) {
-        log.info("saveDepartment DepartmentController");
+    public ResponseEntity<Object> saveDepartment(@Valid @RequestBody Department department) {
+        // log.info("saveDepartment DepartmentController");
+        Department responseDepartment = departmentService.saveDepartment(department);
 
-        return departmentService.saveDepartment(department);
+        Map<String, Object> bodyResponse = new HashMap<String, Object>();
+        bodyResponse.put("message", "Department has been created");
+        bodyResponse.put("data", responseDepartment);
+
+        return ResponseEntity.status(201).body(bodyResponse);
     }
 
     @GetMapping("/departments")

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
 class DepartmentRepositoryTest {
@@ -21,13 +21,13 @@ class DepartmentRepositoryTest {
     void setUp() {
         Department department =
                 Department.builder()
+                        .departmentId(1L)
                         .departmentName("CC")
                         .departmentAddress("Barcelona")
                         .departmentCode("CC-CC")
-                        .departmentId(1L)
                         .build();
 
-        entityManager.persist(department);
+        entityManager.merge(department);
     }
 
     @Test
