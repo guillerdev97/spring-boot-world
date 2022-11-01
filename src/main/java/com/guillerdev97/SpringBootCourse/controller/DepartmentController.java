@@ -1,6 +1,7 @@
 package com.guillerdev97.SpringBootCourse.controller;
 
 import com.guillerdev97.SpringBootCourse.entity.Department;
+import com.guillerdev97.SpringBootCourse.error.DepartmentNotFoundException;
 import com.guillerdev97.SpringBootCourse.service.DepartmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +35,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/{id}")
-    public Department fetchDepartmentById(@PathVariable("id") Long departmentId) {
+    public Department fetchDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         return departmentService.fetchDepartmentById(departmentId);
     }
 
